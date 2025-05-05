@@ -21,23 +21,28 @@ export default function GalleryPage() {
 
   useEffect(() => {
     async function fetchArtifacts() {
-      const artifactsQuery = query(
-        collection(db, 'artifacts'),
-        orderBy('submitted', 'desc')
-      )
-      
-      const querySnapshot = await getDocs(artifactsQuery)
-      const artifactList = querySnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      })) as Artifact[]
-      
-      setArtifacts(artifactList)
-      setLoading(false)
+      try {
+        const artifactsQuery = query(
+          collection(db, 'artifacts')
+        );
+        
+        const querySnapshot = await getDocs(artifactsQuery);
+        
+        const artifactList = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as Artifact[]
+        
+        setArtifacts(artifactList);
+      } catch (error) {
+        console.error("Error fetching artifacts:", error);
+      } finally {
+        setLoading(false);
+      }
     }
     
-    fetchArtifacts()
-  }, [])
+    fetchArtifacts();
+  }, []);
 
   return (
     <>

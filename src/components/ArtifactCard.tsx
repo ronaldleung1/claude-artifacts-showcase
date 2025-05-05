@@ -13,7 +13,7 @@ interface ArtifactCardProps {
   projectName: string
   artifactUrl: string
   screenshotUrl?: string
-  submitted: Date
+  // submitted: Date
 }
 
 export function ArtifactCard({

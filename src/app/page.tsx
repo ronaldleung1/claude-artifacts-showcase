@@ -12,7 +12,7 @@ interface Artifact {
   projectName: string
   artifactUrl: string
   screenshotUrl?: string
-  submitted: any
+  // submitted: Date
 }
 
 export default function GalleryPage() {

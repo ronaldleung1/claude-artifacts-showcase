@@ -27,6 +27,27 @@ export function SubmissionForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    console.log('Form Data:', formData);
+
+    // Validate email domain
+    if (!formData.email.endsWith('@cornell.edu')) {
+      alert('Only Cornell email addresses (@cornell.edu) are allowed');
+      return;
+    }
+    
+    // Validate artifact URL
+    if (!formData.artifactUrl.includes('claude.ai/public/artifacts/')) {
+      alert('URL must be a valid Claude artifact URL (claude.ai/public/artifacts/)');
+      return;
+    }
+    
+    // Validate project name
+    if (!formData.projectName.trim()) {
+      alert('Project name is required');
+      return;
+    }
+    
     setIsSubmitting(true)
     
     try {
@@ -36,7 +57,7 @@ export function SubmissionForm() {
         submitted: new Date()
       })
       
-      router.push('/gallery?success=true')
+      router.push('/?success=true')
     } catch (error) {
       console.error('Error submitting artifact:', error)
       alert('Failed to submit. Please try again.')
@@ -48,7 +69,7 @@ export function SubmissionForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
       <div className="space-y-2">
-        <Label htmlFor="email">Your Email</Label>
+        <Label htmlFor="email">Your Email (@cornell.edu)</Label>
         <Input
           id="email"
           name="email"
@@ -81,7 +102,7 @@ export function SubmissionForm() {
           required
           value={formData.artifactUrl}
           onChange={handleChange}
-          placeholder="https://claude.ai/artifacts/..."
+          placeholder="https://claude.ai/public/artifacts..."
         />
         <p className="text-sm text-muted-foreground">
           The URL to your Claude-generated artifact

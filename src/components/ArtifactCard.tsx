@@ -38,7 +38,15 @@ export function ArtifactCard({
         <CardTitle className="text-xl">{projectName}</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-sm text-muted-foreground truncate">{artifactUrl}</p>
+        <p className="text-sm text-muted-foreground truncate">
+          <a 
+            href={artifactUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {artifactUrl}
+          </a>
+        </p>
       </CardContent>
       <CardFooter>
         <Button asChild variant="secondary" className="w-full">

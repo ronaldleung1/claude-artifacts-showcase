@@ -10,12 +10,12 @@ export function Header() {
           Claude Artifacts
         </Link>
         <p className="text-sm text-muted-foreground">
-          Showcase of amazing artifacts created with Claude
+          Showcase of artifacts created with <a className="text-foreground underline" href="https://www.anthropic.com/for/cornell-students">Claude</a>
         </p>
       </div>
       <nav className="flex gap-4">
         <Button variant="ghost" asChild>
-          <Link href="/gallery">Gallery</Link>
+          <Link href="/">Gallery</Link>
         </Button>
         <Button asChild>
           <Link href="/submit">Submit</Link>

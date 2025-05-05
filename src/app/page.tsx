@@ -21,7 +21,7 @@ export default function Home() {
               Submit Your Artifact
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg">
+          <Button asChild variant="secondary" size="lg">
             <Link href="/gallery">
               Browse Gallery
             </Link>

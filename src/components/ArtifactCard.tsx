@@ -19,11 +19,11 @@ interface ArtifactCardProps {
 export function ArtifactCard({
   projectName,
   artifactUrl,
-  screenshotUrl,
+  // screenshotUrl,
 }: ArtifactCardProps) {
   return (
     <Card className="overflow-hidden">
-      <div className="h-48 bg-secondary flex items-center justify-center">
+      {/* <div className="h-48 bg-secondary flex items-center justify-center">
         {screenshotUrl ? (
           <img 
             src={screenshotUrl} 
@@ -33,7 +33,7 @@ export function ArtifactCard({
         ) : (
           <div className="text-muted-foreground text-sm">No preview available</div>
         )}
-      </div>
+      </div> */}
       <CardHeader>
         <CardTitle className="text-xl">{projectName}</CardTitle>
       </CardHeader>
@@ -41,7 +41,7 @@ export function ArtifactCard({
         <p className="text-sm text-muted-foreground truncate">{artifactUrl}</p>
       </CardContent>
       <CardFooter>
-        <Button asChild variant="outline" className="w-full">
+        <Button asChild variant="secondary" className="w-full">
           <a 
             href={artifactUrl}
             target="_blank"
